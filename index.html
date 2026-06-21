@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>爆冷雷达 · 今日一注 · Claude 网状深想</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f2ecdd; --cream2:#faf5e9; --card:#fbf8f0;
+  --ink:#23211c; --ink2:#5c5648; --ink3:#8a8473;
+  --line:#e3dac7; --line2:#d3c8b0;
+  --pitch:#2a8c4f; --pitch2:#268048; --pitch-dk:#1c6b3b;
+  --gold:#d99e22; --gold-dk:#a8780f;
+  --heat:#d6452a; --value:#2e7d57; --warn:#bd8a1f; --avoid:#9a9384;
+  --disp:'Oswald',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  --grot:'Space Grotesk',-apple-system,'PingFang SC',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --cjk:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  --sh:0 1px 0 #fff inset,0 3px 16px rgba(60,45,20,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--cream);background-image:radial-gradient(circle at 50% -8%,#e9f3ea 0,transparent 36%),radial-gradient(circle at 100% 0,#f7f1e3 0,transparent 30%);color:var(--ink);font-family:var(--cjk);line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:70px}
+.wrap{max-width:840px;margin:0 auto;padding:0 16px}
+b{font-weight:700}
+
+header{padding:26px 0 0}
+.kick{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--ink3);text-transform:uppercase}
+.kick .dot{width:7px;height:7px;border-radius:50%;background:var(--heat);box-shadow:0 0 0 4px rgba(214,69,42,.15);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(28px,6.5vw,46px);letter-spacing:-.5px;line-height:1;text-transform:uppercase;margin:8px 0 3px}
+h1 em{font-style:normal;color:var(--heat)}
+.sub1{font-family:var(--grot);font-size:13.5px;color:var(--ink2);font-weight:500;max-width:64ch}
+.sub1 b{color:var(--ink)}
+.stripe{height:7px;margin:14px 0 0;border-radius:4px;background:repeating-linear-gradient(90deg,var(--pitch) 0 22px,var(--pitch2) 22px 44px)}
+.statline{display:flex;gap:16px;flex-wrap:wrap;margin-top:11px;font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.statline b{font-family:var(--disp);font-size:14px;color:var(--ink);font-weight:600}
+.statline .neg{color:var(--heat)}
+
+.shead{display:flex;align-items:center;gap:11px;margin:30px 0 13px}
+.shead .ic{font-size:18px;line-height:1}
+.shead .t{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.2px;text-transform:uppercase;white-space:nowrap}
+.shead .t small{font-family:var(--cjk);font-weight:400;font-size:12px;color:var(--ink3);margin-left:8px;text-transform:none;letter-spacing:0}
+.shead .ln{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--line2) 0 7px,transparent 7px 13px)}
+
+.pick{position:relative;border-radius:18px;overflow:hidden;border:2px solid var(--gold);box-shadow:0 8px 30px rgba(168,120,15,.18);background:linear-gradient(160deg,#fffaf0,#fbf4e4)}
+.pick-ribbon{position:absolute;top:14px;right:-34px;transform:rotate(38deg);background:var(--gold);color:#fff;font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:1.5px;padding:4px 40px;text-transform:uppercase;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.pick-in{padding:18px 20px 20px}
+.pick-lab{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--gold-dk);text-transform:uppercase}
+.pick-title{font-family:var(--disp);font-weight:700;font-size:clamp(24px,5.5vw,34px);letter-spacing:-.3px;line-height:1.05;margin:5px 0 3px}
+.pick-title em{font-style:normal;color:var(--heat)}
+.pick-meta{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-bottom:13px}
+.legs{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.leg{display:grid;grid-template-columns:30px 1fr auto;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 13px}
+.leg .lfl{font-size:24px;text-align:center}
+.leg .lmid{min-width:0}
+.leg .lmid .lt{font-family:var(--disp);font-weight:600;font-size:16px;line-height:1.1}
+.leg .lmid .lt .ng{font-size:11px;color:var(--ink3);font-weight:400;margin-left:5px}
+.leg .lmid .lw{font-size:11.5px;color:var(--ink2);margin-top:2px;line-height:1.4}
+.leg .lod{font-family:var(--mono);font-weight:700;font-size:16px;color:#fff;background:var(--pitch-dk);padding:3px 9px;border-radius:7px;white-space:nowrap}
+.combo{display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,#1c6b3b,#21563a);border-radius:12px;padding:13px 16px;margin-bottom:14px;color:#fff;flex-wrap:wrap}
+.combo .ck{font-family:var(--mono);font-size:11px;letter-spacing:1px;color:#bfe6cd;text-transform:uppercase}
+.combo .cx{font-family:var(--disp);font-weight:700;font-size:30px;line-height:1;color:#ffd97a}
+.combo .cp{margin-left:auto;text-align:right;font-family:var(--mono);font-size:12px;color:#d9f0e0}
+.combo .cp b{font-family:var(--disp);font-size:24px;color:#fff;display:block;line-height:1.05}
+.verdict{font-size:14px;line-height:1.7;color:var(--ink)}
+.verdict b{color:var(--heat)}
+.alt{margin-top:13px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--ink2);background:#f6f1e6;border-radius:10px;padding:10px 13px}
+.alt .tag{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--value);text-transform:uppercase;border:1px solid #cfe4d6;border-radius:5px;padding:2px 7px;background:#fff}
+.alt .o{font-family:var(--mono);font-weight:700;color:var(--ink)}
+.invalid{margin-top:13px;border-left:3px solid var(--heat);background:#fbf0ec;padding:10px 14px;border-radius:0 10px 10px 0}
+.invalid .l{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--heat);text-transform:uppercase;margin-bottom:3px}
+.invalid p{font-size:13px;color:var(--ink)}
+
+.ladder{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);padding:15px 16px}
+.lad{display:flex;flex-direction:column;gap:0}
+.lstep{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:9px 0}
+.lstep .ls-l{font-size:13px;color:var(--ink2)}
+.lstep .ls-l b{color:var(--ink)}
+.lstep .ls-v{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--ink)}
+.lstep.fin .ls-v{color:var(--value);font-size:26px}
+.lstep.fin .ls-l b{color:var(--value)}
+.lad .conn{height:16px;border-left:2px dashed var(--line2);margin-left:8px}
+.lad-note{margin-top:8px;font-family:var(--mono);font-size:11px;color:var(--ink3);text-align:center}
+
+.lstats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:13px}
+@media(max-width:560px){.lstats{grid-template-columns:repeat(2,1fr)}}
+.lstat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 10px;text-align:center;box-shadow:var(--sh)}
+.lstat .ll{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.3px}
+.lstat .lv{font-family:var(--disp);font-weight:700;font-size:24px;line-height:1.05;margin-top:3px}
+.lstat .lv.neg{color:var(--heat)}.lstat .lv.pos{color:var(--value)}.lstat .lv.neu{color:var(--ink)}
+.log{display:flex;flex-direction:column;gap:9px}
+.le{display:grid;grid-template-columns:44px 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 14px;box-shadow:var(--sh)}
+.le.pending{border-style:dashed;border-color:var(--gold)}
+.le .lday{text-align:center}
+.le .lday .d{font-family:var(--disp);font-weight:700;font-size:13px;color:#fff;background:var(--ink);border-radius:8px;padding:2px 0;line-height:1.5}
+.le .lday .d.w{background:var(--value)}.le .lday .d.l{background:var(--heat)}
+.le .lday .dt{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:3px}
+.le .lbody{min-width:0}
+.le .lh{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.le .lh .mt{font-family:var(--disp);font-weight:600;font-size:14.5px}
+.le .lh .res{font-family:var(--mono);font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
+.res.loss{color:var(--heat);background:#fbe9e4}.res.win{color:var(--value);background:#e7f2eb}.res.pend{color:var(--gold-dk);background:#f7eccb}
+.le .lpick{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin:5px 0}
+.le .lpick b{color:var(--ink)}
+.le .lpick .pl{font-weight:700}.le .lpick .pl.neg{color:var(--heat)}.le .lpick .pl.pos{color:var(--value)}
+.le .lrev{font-size:12px;color:var(--ink2);line-height:1.55;border-top:1px dashed var(--line);padding-top:6px;margin-top:2px}
+.le .lrev b{color:var(--ink)}
+.le .lrev .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.5px;color:var(--warn);text-transform:uppercase;margin-right:6px}
+
+.scan{display:flex;flex-direction:column;gap:11px}
+.srow{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--sh);padding:13px 16px}
+.srow.win{border-color:var(--gold);background:linear-gradient(160deg,#fffaf0,#fbf8f0)}
+.srow .stop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.srow .gtag{font-family:var(--mono);font-size:10px;color:var(--ink3);border:1px solid var(--line2);padding:1px 6px;border-radius:5px}
+.srow .nm{font-family:var(--disp);font-weight:600;font-size:17px;display:flex;align-items:center;gap:8px}
+.srow .nm .vs{font-size:12px;color:var(--ink3);font-weight:400}
+.srow .verd{margin-left:auto;font-family:var(--mono);font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px}
+.v-win{color:var(--gold-dk);background:#f7eccb}.v-2nd{color:var(--value);background:#e7f2eb}.v-watch{color:var(--warn);background:#f6efda}.v-avoid{color:var(--avoid);background:#eeebe2}
+.srow .odds{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin:3px 0 5px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.srow .odds b{color:var(--ink)}
+.srow .why{font-size:12.5px;color:var(--ink2)}
+.srow .why b{color:var(--heat)}
+
+.method{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--sh);overflow:hidden}
+.mrow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;padding:12px 16px;border-bottom:1px solid var(--line)}
+.mrow:last-child{border-bottom:none}
+.mrow.fresh{background:#fbf4e4}
+.mrow .no{font-family:var(--disp);font-weight:700;font-size:17px;color:var(--ink3);line-height:1.3}
+.mrow .mt{font-size:13px}
+.mrow .mt b{font-weight:700}
+.mrow .mt small{color:var(--ink2);display:block;font-size:12px;margin-top:1px}
+.mrow .mt .new{font-family:var(--mono);font-size:9px;font-weight:700;color:#fff;background:var(--gold);padding:1px 6px;border-radius:4px;letter-spacing:.5px;margin-left:6px;vertical-align:middle}
+.fire{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:20px;white-space:nowrap;height:fit-content}
+.fire.on{color:var(--value);background:#e7f2eb}.fire.off{color:var(--ink3);background:#efece3}
+
+footer{margin-top:30px;border-top:2px solid var(--line);padding-top:16px;font-size:12px;color:var(--ink2)}
+.rg{padding:11px 14px;background:#f6efda;border:1px solid #ecdfba;border-radius:10px;font-size:12px;color:#6b5a2a}
+.rg b{color:#4d3f15}
+.sign{margin-top:13px;font-family:var(--mono);font-size:10.5px;color:var(--ink3);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kick"><span class="dot"></span>WORLD CUP 2026 · 美加墨 · CLAUDE 网状深想</div>
+  <h1>爆冷雷达 · 今晚<em>moonshot</em> 🚀</h1>
+  <div class="sub1">每天挑当晚最锋利的几条冷门腿，串成大倍率 moonshot——<b>小注、博倍率、认大概率不中</b>。诚实摆账：8 天 1–7，没找到可持续 edge，这本就是 −EV 娱乐；继续玩，但<b>只下输得起的钱、不自欺为稳赚</b>。</div>
+  <div class="stripe"></div>
+  <div class="statline">
+    <span>DAY <b>9</b> · 6/21 周日</span>
+    <span>今晚 <b>4</b> 场</span>
+    <span>距决赛 <b>28</b> 天</span>
+    <span>战绩 <b class="neg">1–7</b> · 累计 <b class="neg">−420U</b> · 今晚待结算</span>
+  </div>
+</header>
+
+<div class="shead"><span class="ic">🚀</span><span class="t">今晚一注<small>2 串 1 moonshot · 主题：拉胯豪强同日再被逼住</small></span><span class="ln"></span></div>
+<div class="pick">
+  <div class="pick-ribbon">Moonshot</div>
+  <div class="pick-in">
+    <div class="pick-lab">小注 × 多串 · 讲对故事的 −EV 彩票</div>
+    <div class="pick-title">两大拉胯豪强 <em>同夜再翻车</em> · 2 串 1</div>
+    <div class="pick-meta">H 组 · 北京 6/22 凌晨 · 一腿失则全失</div>
+    <div class="legs" id="legs"></div>
+    <div class="combo"><div><div class="ck">组合赔率</div><div class="cx" id="cx">×7.6</div></div><div class="cp">100U 命中 →<b id="cpay">756U</b>约 10% 命中</div></div>
+    <div class="verdict">不缩、继续搏，但今天我把账摆平：这俩腿按 Opta 都 ≈ 公道/微负，<b>不是 +EV、是一张讲对了故事的彩票</b>。故事是——<b>两个首轮就拉胯的豪强同夜再被顽强弱旅逼住</b>：比利时被埃及 1-1、撞上防守铁桶且最擅搅黄强队的伊朗；乌拉圭被沙特 1-1、撞上<b>刚把夺冠热门西班牙 0-0 零封</b>的佛得角。2 串 ×7.6，100U 搏 756U。大概率不中、只亏小注；搏的是这届"豪强归位"行情里，总有一夜被顽强弱旅同时绊倒。</div>
+    <div class="alt"><span class="tag">稳一档</span>不想串？单押 <b>佛得角 不败</b> <span class="o">@2.67</span>——它刚零封西班牙、防线是真货，命中率约 33%。要倍率打串、要命中率打单。</div>
+    <div class="invalid"><div class="l">认清串关本质</div><p>一腿挂全单挂——比利时正常拿下伊朗、或乌拉圭正常赢佛得角，这张就废。<b>只用输得起的小注</b>，当一张有脑子的彩票，不是回本工具（账上已 −420U，更不能追损）。</p></div>
+  </div>
+</div>
+
+<div class="shead"><span class="ic">🪜</span><span class="t">倍率阶梯<small>100U 如何滚成 756U</small></span><span class="ln"></span></div>
+<div class="ladder"><div class="lad" id="lad"></div><div class="lad-note" id="ladnote"></div></div>
+
+<div class="shead"><span class="ic">🏁</span><span class="t">战绩台<small>每注必复盘 · 真实赛果入账 · 彻底诚实</small></span><span class="ln"></span></div>
+<div class="lstats" id="lstats"></div>
+<div class="log" id="log"></div>
+
+<div class="shead"><span class="ic">📋</span><span class="t">今晚 4 场 · 全过一遍<small>哪些进了串、哪些回避</small></span><span class="ln"></span></div>
+<div class="scan" id="scan"></div>
+
+<div class="shead"><span class="ic">📐</span><span class="t">我用的爆冷方法论<small>历史有效框架＋复盘进化 · 标注今晚是否触发</small></span><span class="ln"></span></div>
+<div class="method" id="method"></div>
+
+<footer>
+  <div class="rg"><b>这是娱乐：</b>赌球长期 −EV、串关更甚（抽水叠加）。8 天 1–7、累计 −420U——<b>这页最大的诚实就是：它没找到稳定 edge，照实显示在最上面</b>。本工具只帮你把注定 −EV 的"圆梦"做得有脑子点：小注、博倍率、讲对故事。只用<b>输得起的钱</b>（你说的 300U 封顶），<b>绝不追损、绝不加注回本</b>。以官方赛程与持牌平台实时盘口为准，遵守当地法律。</div>
+  <div class="sign">爆冷雷达 · 今日一注 v4.1（moonshot 串关版）· Claude 网状深想 · 数据 ESPN/FIFA/Opta/Polymarket 等 · 每日推演＋复盘进化</div>
+</footer>
+
+</div>
+
+<script>
+// ---------------- tonight's parlay ----------------
+const STAKE=100;
+const LEGS=[
+ {fl:'🇮🇷',team:'伊朗 不败',ng:'vs 比利时',odd:2.83,why:'比利时首轮被埃及1-1逼平、黄金一代乏力;伊朗防守铁桶、最擅搅黄强队'},
+ {fl:'🇨🇻',team:'佛得角 不败',ng:'vs 乌拉圭',odd:2.67,why:'佛得角刚把夺冠热门西班牙0-0零封、防线组织顶级;乌拉圭首轮也仅1-1平沙特'}
+];
+const combo=LEGS.reduce((a,l)=>a*l.odd,1);
+const payout=Math.round(STAKE*combo);
+document.getElementById('legs').innerHTML=LEGS.map((l,i)=>`
+  <div class="leg">
+    <span class="lfl">${l.fl}</span>
+    <div class="lmid"><div class="lt">${l.team}${l.ng?`<span class="ng">${l.ng}</span>`:''}</div><div class="lw">腿${i+1}：${l.why}</div></div>
+    <span class="lod">@${l.odd.toFixed(2)}</span>
+  </div>`).join('');
+document.getElementById('cx').textContent='×'+combo.toFixed(1);
+document.getElementById('cpay').textContent=payout+'U';
+
+// ladder (robust: mark last step in loop)
+let run=STAKE; let steps=`<div class="lstep"><div class="ls-l">本金</div><div class="ls-v">${STAKE}U</div></div>`;
+LEGS.forEach((l,i)=>{ run=run*l.odd; const fin=(i===LEGS.length-1);
+  steps+=`<div class="conn"></div><div class="lstep ${fin?'fin':''}"><div class="ls-l">× <b>${l.team}</b> @${l.odd.toFixed(2)}${fin?' → 🚀':''}</div><div class="ls-v">${Math.round(run)}U</div></div>`; });
+document.getElementById('lad').innerHTML=steps;
+document.getElementById('ladnote').textContent='一腿失则归零 · 命中率约 10% · 输得起才下';
+
+// ---------------- ledger ----------------
+const LOG=[
+ {day:1,date:'6/13',match:'巴西 1–1 摩洛哥',pick:'摩洛哥 直接赢',odd:5.25,status:'loss',pl:-100,review:'<span class="tag">复盘</span>单赢遇平即输。'},
+ {day:2,date:'6/14',match:'荷兰 2–2 日本',pick:'日本 直接赢',odd:3.40,status:'loss',pl:-100,review:'<span class="tag">复盘</span>又平。'},
+ {day:3,date:'6/15',match:'比利时 1–1 埃及',pick:'打平',odd:3.80,status:'win',pl:280,review:'<span class="tag">复盘 ✓</span><b>命中 +280U</b>，至今唯一一胜、来自押"平"。'},
+ {day:4,date:'6/16',match:'法国 3–1 塞内加尔',pick:'塞内加尔 直接赢',odd:8.00,status:'loss',pl:-100,review:'<span class="tag">复盘</span>碾压。'},
+ {day:5,date:'6/17',match:'加纳 1–0 巴拿马',pick:'巴拿马 直接赢',odd:3.60,status:'loss',pl:-100,review:'<span class="tag">复盘</span>90+5\'绝杀。'},
+ {day:6,date:'6/18',match:'墨西哥 1–0 韩国',pick:'韩国 直接赢',odd:4.20,status:'loss',pl:-100,review:'<span class="tag">复盘</span>门将失误丢球、仍输。'},
+ {day:7,date:'6/19',match:'美国 2–0 澳大利亚',pick:'澳大利亚 直接赢',odd:5.75,status:'loss',pl:-100,review:'<span class="tag">复盘</span>反买94%失败、公众对。'},
+ {day:8,date:'6/20',match:'3 串 1（德/荷/突日）',pick:'德不胜+荷不胜+突日平',odd:18.49,status:'loss',pl:-100,review:'<span class="tag">复盘</span><b>3 腿全断</b>：德国2-1逆转科特迪瓦、荷兰5-1血洗瑞典(押瑞典不败彻底反向)、日本4-0屠突尼斯。豪强碾压行情，串关也救不了。'},
+ {day:9,date:'6/21',match:'今晚 2 串 1 moonshot',pick:'伊朗不败 + 佛得角不败',odd:combo,status:'pending',pl:null,review:'<span class="tag">推演</span>两个拉胯豪强同夜再被逼住。诚实：两腿≈公道/微负，是 −EV 小注彩票、非 +EV。'}
+];
+const settled=LOG.filter(l=>l.status==='loss'||l.status==='win');
+const cumPL=settled.reduce((s,l)=>s+(l.pl||0),0);
+const wins=settled.filter(l=>l.status==='win').length;
+const roi=settled.length?Math.round(cumPL/(STAKE*settled.length)*100):0;
+const sCls=cumPL>0?'pos':cumPL<0?'neg':'neu';
+document.getElementById('lstats').innerHTML=`
+ <div class="lstat"><div class="ll">累计盈亏 (每注${STAKE}U)</div><div class="lv ${sCls}">${cumPL>0?'+':''}${cumPL}U</div></div>
+ <div class="lstat"><div class="ll">战绩 (胜–负)</div><div class="lv neu">${wins}–${settled.length-wins}</div></div>
+ <div class="lstat"><div class="ll">命中率</div><div class="lv neu">${settled.length?Math.round(wins/settled.length*100):0}%</div></div>
+ <div class="lstat"><div class="ll">ROI</div><div class="lv ${sCls}">${roi>0?'+':''}${roi}%</div></div>`;
+const rmap={loss:['res loss','输'],win:['res win','赢'],pending:['res pend','待结算']};
+document.getElementById('log').innerHTML=LOG.slice().reverse().map(l=>{
+  let plTxt,plCls='';
+  if(l.status==='pending'){plTxt=`若中 +${Math.round(STAKE*(l.odd-1))}U`;}
+  else {plTxt=`${l.pl>0?'+':''}${l.pl}U`; plCls=l.status==='win'?'pos':'neg';}
+  const dCls=l.status==='win'?'w':l.status==='loss'?'l':'';
+  return `<div class="le ${l.status==='pending'?'pending':''}">
+    <div class="lday"><div class="d ${dCls}">D${l.day}</div><div class="dt">${l.date}</div></div>
+    <div class="lbody">
+      <div class="lh"><span class="mt">${l.match}</span><span class="${rmap[l.status][0]}">${rmap[l.status][1]}</span></div>
+      <div class="lpick">选：<b>${l.pick} @${l.odd.toFixed(2)}</b> · ${STAKE}U · <span class="pl ${plCls}">${plTxt}</span></div>
+      <div class="lrev">${l.review}</div>
+    </div></div>`;
+}).join('');
+
+// ---------------- tonight's 4 matches scan ----------------
+const SCAN=[
+ {g:'H组',h:'比利时',a:'伊朗',fl:'🇮🇷',verd:['v-win','★串·腿1'],odds:'比利时1.40 / 平4.75 / 伊朗7.00',why:'比利时被埃及1-1、老化乏力;伊朗防守铁桶。<b>"伊朗不败@2.83"</b>入串(≈公道,搏故事)。'},
+ {g:'H组',h:'乌拉圭',a:'佛得角',fl:'🇨🇻',verd:['v-win','★串·腿2'],odds:'乌拉圭1.45 / 平4.33 / 佛得角7.00',why:'佛得角刚0-0零封西班牙、防线真货;乌拉圭也仅1-1平沙特。<b>"佛得角不败@2.67"</b>入串。'},
+ {g:'H组',h:'西班牙',a:'沙特',fl:'🇸🇦',verd:['v-avoid','chalk回避'],odds:'西班牙-1250(超低) / 沙特+2200',why:'西班牙被佛得角0-0憋疯、必反弹屠沙特;沙特+2200是<b>纯送钱陷阱</b>。无肉之有效冷门，不入串。'},
+ {g:'?组',h:'新西兰',a:'埃及',fl:'🇪🇬',verd:['v-watch','观望'],odds:'埃及favored / 新西兰大冷',why:'埃及(萨拉赫)更强、新西兰攻坚弱。新西兰不败是longshot、无清晰边际，不入串。'},
+];
+document.getElementById('scan').innerHTML=SCAN.map(s=>`
+  <div class="srow ${s.verd[0]==='v-win'?'win':''}">
+    <div class="stop"><span class="gtag">${s.g}</span><span class="nm">${s.h}<span class="vs">vs</span>${s.fl} ${s.a}</span><span class="verd ${s.verd[0]}">${s.verd[1]}</span></div>
+    <div class="odds">盘口：<b>${s.odds}</b></div>
+    <div class="why">${s.why}</div>
+  </div>`).join('');
+
+// ---------------- methodology ----------------
+const METHOD=[
+ {t:'认清这是 −EV 彩票 · 只下输得起的小注',s:'8天1-7证明没有可持续edge——继续玩=接受娱乐性−EV。小注、博倍率、不自欺为+EV、绝不追损。这是今天最大的进化:诚实。',fire:true,fresh:true},
+ {t:'小注 × 多串 = 唯一能圆梦的形状',s:'单场5倍单既被抽水吃死、又到不了"2000万"。要大钱只能靠多串的乘法payoff(你那张图就是10串)。',fire:true},
+ {t:'挑腿要讲对故事',s:'每条腿要有真叙事(脆弱豪强×顽强弱旅/状态背离),不硬凑。今晚=两个拉胯豪强同夜被逼。',fire:true},
+ {t:'押"平/不败" > 押"弱队单赢"',s:'8天数据:押单赢0-6、唯一胜来自押"平"。串关腿优先用命中率更高的"不败/平"。',fire:true},
+ {t:'形态背离 · 脆弱favorite',s:'比利时/乌拉圭首轮都只逼平、状态在线度存疑——盯"赢得费劲"的豪强。',fire:true},
+ {t:'世界杯爆冷铁律 · 顽强弱旅',s:'佛得角刚零封西班牙、伊朗防守铁桶——能把强队拖进泥潭的那种。',fire:true},
+ {t:'回避 chalk 与陷阱',s:'西班牙-1250送钱、沙特+2200陷阱,都不碰。高赔率≠价值。',fire:true},
+ {t:'一注制 · 强制纪律',s:'每天一张单(今晚=一张串)，不连开、不追损。控回撤＝活到决赛。',fire:true},
+ {t:'比分盘留作更高倍 moonshot',s:'要更大倍率时用correct-score(10×+);今晚先用不败串稳一点的命中率。',fire:false},
+ {t:'豪强逼平潮 vs 归位（动态）',s:'D1-3逼平→D4起归位碾压。模式在变、别死守;只在个案成立时单点狙。',fire:true},
+];
+document.getElementById('method').innerHTML=METHOD.map((m,i)=>`
+  <div class="mrow ${m.fresh?'fresh':''}"><span class="no">${String(i+1).padStart(2,'0')}</span>
+    <span class="mt"><b>${m.t}</b>${m.fresh?'<span class="new">复盘新增</span>':''}<small>${m.s}</small></span>
+    <span class="fire ${m.fire?'on':'off'}">${m.fire?'✓ 今晚触发':'— 搁置'}</span></div>`).join('');
+</script>
+</body>
+</html>
