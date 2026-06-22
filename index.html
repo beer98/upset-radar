@@ -29,7 +29,7 @@ b{font-weight:700}
 
 header{padding:26px 0 0}
 .kick{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--ink3);text-transform:uppercase}
-.kick .dot{width:7px;height:7px;border-radius:50%;background:var(--heat);box-shadow:0 0 0 4px rgba(214,69,42,.15);animation:pulse 2s infinite}
+.kick .dot{width:7px;height:7px;border-radius:50%;background:var(--value);box-shadow:0 0 0 4px rgba(46,125,87,.15);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 h1{font-family:var(--disp);font-weight:700;font-size:clamp(28px,6.5vw,46px);letter-spacing:-.5px;line-height:1;text-transform:uppercase;margin:8px 0 3px}
 h1 em{font-style:normal;color:var(--heat)}
@@ -38,7 +38,7 @@ h1 em{font-style:normal;color:var(--heat)}
 .stripe{height:7px;margin:14px 0 0;border-radius:4px;background:repeating-linear-gradient(90deg,var(--pitch) 0 22px,var(--pitch2) 22px 44px)}
 .statline{display:flex;gap:16px;flex-wrap:wrap;margin-top:11px;font-family:var(--mono);font-size:11px;color:var(--ink2)}
 .statline b{font-family:var(--disp);font-size:14px;color:var(--ink);font-weight:600}
-.statline .neg{color:var(--heat)}
+.statline .neg{color:var(--heat)}.statline .pos{color:var(--value)}
 
 .shead{display:flex;align-items:center;gap:11px;margin:30px 0 13px}
 .shead .ic{font-size:18px;line-height:1}
@@ -55,10 +55,13 @@ h1 em{font-style:normal;color:var(--heat)}
 .pick-meta{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-bottom:13px}
 .legs{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
 .leg{display:grid;grid-template-columns:30px 1fr auto;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 13px}
+.leg.bank{border-color:#cfe4d6}
 .leg .lfl{font-size:24px;text-align:center}
 .leg .lmid{min-width:0}
 .leg .lmid .lt{font-family:var(--disp);font-weight:600;font-size:16px;line-height:1.1}
 .leg .lmid .lt .ng{font-size:11px;color:var(--ink3);font-weight:400;margin-left:5px}
+.leg .lmid .lt .tagv{font-family:var(--mono);font-size:9px;font-weight:700;color:#fff;background:var(--value);border-radius:4px;padding:1px 5px;margin-left:6px;letter-spacing:.5px;vertical-align:middle}
+.leg .lmid .lt .tagb{background:var(--ink3)}
 .leg .lmid .lw{font-size:11.5px;color:var(--ink2);margin-top:2px;line-height:1.4}
 .leg .lod{font-family:var(--mono);font-weight:700;font-size:16px;color:#fff;background:var(--pitch-dk);padding:3px 9px;border-radius:7px;white-space:nowrap}
 .combo{display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,#1c6b3b,#21563a);border-radius:12px;padding:13px 16px;margin-bottom:14px;color:#fff;flex-wrap:wrap}
@@ -95,6 +98,7 @@ h1 em{font-style:normal;color:var(--heat)}
 .log{display:flex;flex-direction:column;gap:9px}
 .le{display:grid;grid-template-columns:44px 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 14px;box-shadow:var(--sh)}
 .le.pending{border-style:dashed;border-color:var(--gold)}
+.le.bigwin{border-color:var(--value);background:linear-gradient(160deg,#f0f8f2,#fbf8f0)}
 .le .lday{text-align:center}
 .le .lday .d{font-family:var(--disp);font-weight:700;font-size:13px;color:#fff;background:var(--ink);border-radius:8px;padding:2px 0;line-height:1.5}
 .le .lday .d.w{background:var(--value)}.le .lday .d.l{background:var(--heat)}
@@ -148,48 +152,48 @@ footer{margin-top:30px;border-top:2px solid var(--line);padding-top:16px;font-si
 
 <header>
   <div class="kick"><span class="dot"></span>WORLD CUP 2026 · 美加墨 · CLAUDE 网状深想</div>
-  <h1>爆冷雷达 · 今晚<em>moonshot</em> 🚀</h1>
-  <div class="sub1">每天挑当晚最锋利的几条冷门腿，串成大倍率 moonshot——<b>小注、博倍率、认大概率不中</b>。诚实摆账：8 天 1–7，没找到可持续 edge，这本就是 −EV 娱乐；继续玩，但<b>只下输得起的钱、不自欺为稳赚</b>。</div>
+  <h1>爆冷雷达 · 今日<em>moonshot</em> 🚀</h1>
+  <div class="sub1">每天挑当天最锋利的几条冷门腿、串成大倍率 moonshot——小注、博倍率、认大概率不中。<b>D9 那张 2 串中了、把 −420U 拉回 +236U</b>；但那是 ~10% 彩票<b>这次刚好命中</b>、是方差不是 edge，仍是 −EV 游戏，不上头、继续按纪律。</div>
   <div class="stripe"></div>
   <div class="statline">
-    <span>DAY <b>9</b> · 6/21 周日</span>
-    <span>今晚 <b>4</b> 场</span>
-    <span>距决赛 <b>28</b> 天</span>
-    <span>战绩 <b class="neg">1–7</b> · 累计 <b class="neg">−420U</b> · 今晚待结算</span>
+    <span>DAY <b>10</b> · 6/22 周一</span>
+    <span>今日 <b>4</b> 场(MD2)</span>
+    <span>距决赛 <b>27</b> 天</span>
+    <span>战绩 <b>2–7</b> · 累计 <b class="pos">+236U</b> · 今日待结算</span>
   </div>
 </header>
 
-<div class="shead"><span class="ic">🚀</span><span class="t">今晚一注<small>2 串 1 moonshot · 主题：拉胯豪强同日再被逼住</small></span><span class="ln"></span></div>
+<div class="shead"><span class="ic">🚀</span><span class="t">今日一注<small>2 串 1 · 一条 value + 一条 banker · 今天比 D9 薄</small></span><span class="ln"></span></div>
 <div class="pick">
   <div class="pick-ribbon">Moonshot</div>
   <div class="pick-in">
-    <div class="pick-lab">小注 × 多串 · 讲对故事的 −EV 彩票</div>
-    <div class="pick-title">两大拉胯豪强 <em>同夜再翻车</em> · 2 串 1</div>
-    <div class="pick-meta">H 组 · 北京 6/22 凌晨 · 一腿失则全失</div>
+    <div class="pick-lab">小注 × 多串 · 不强凑、不上头</div>
+    <div class="pick-title">价值平局 <em>×</em> 稳胆 · 2 串 1</div>
+    <div class="pick-meta">I/J 组 MD2 · 北京 6/23 凌晨 · 一腿失则全失</div>
     <div class="legs" id="legs"></div>
-    <div class="combo"><div><div class="ck">组合赔率</div><div class="cx" id="cx">×7.6</div></div><div class="cp">100U 命中 →<b id="cpay">756U</b>约 10% 命中</div></div>
-    <div class="verdict">不缩、继续搏，但今天我把账摆平：这俩腿按 Opta 都 ≈ 公道/微负，<b>不是 +EV、是一张讲对了故事的彩票</b>。故事是——<b>两个首轮就拉胯的豪强同夜再被顽强弱旅逼住</b>：比利时被埃及 1-1、撞上防守铁桶且最擅搅黄强队的伊朗；乌拉圭被沙特 1-1、撞上<b>刚把夺冠热门西班牙 0-0 零封</b>的佛得角。2 串 ×7.6，100U 搏 756U。大概率不中、只亏小注；搏的是这届"豪强归位"行情里，总有一夜被顽强弱旅同时绊倒。</div>
-    <div class="alt"><span class="tag">稳一档</span>不想串？单押 <b>佛得角 不败</b> <span class="o">@2.67</span>——它刚零封西班牙、防线是真货，命中率约 33%。要倍率打串、要命中率打单。</div>
-    <div class="invalid"><div class="l">认清串关本质</div><p>一腿挂全单挂——比利时正常拿下伊朗、或乌拉圭正常赢佛得角，这张就废。<b>只用输得起的小注</b>，当一张有脑子的彩票，不是回本工具（账上已 −420U，更不能追损）。</p></div>
+    <div class="combo"><div><div class="ck">组合赔率</div><div class="cx" id="cx">×5.4</div></div><div class="cp">100U 命中 →<b id="cpay">544U</b>约 18% 命中</div></div>
+    <div class="verdict">今天全场扫完，<b>只有一个真 value</b>：挪威vs塞内加尔的<b>平</b>——两支势均力敌的强队、都要分，分析师明确标这条被低估（现价比"可下线"还肥）。其余全是 chalk（阿根廷有动机不轮换、法国 -1200 屠伊拉克）。所以今天<b>比 D9 薄</b>，我不强凑双 value，而是用这条平做核心、配一条<b>阿尔及利亚屠弱旅约旦的稳胆</b>(它状态好、约旦 6 场不胜)把倍率拱到 ×5.4。诚实讲：edge 只在"平"那条腿，稳胆只是抬倍率。</div>
+    <div class="alt"><span class="tag">稳一档</span>不想串、只要那条真 value？单押 <b>挪威/塞内加尔 平</b> <span class="o">@3.40</span>——约 29% 命中、3.4 倍。要倍率打串、要纯 edge 打单。</div>
+    <div class="invalid"><div class="l">认清串关本质</div><p>一腿挂全单挂——挪威或塞内加尔分出胜负、或约旦爆冷拖住阿尔及利亚，这张就废。<b>只用输得起的小注</b>。账上刚回 +236U，更要守住、不加注不上头。</p></div>
   </div>
 </div>
 
-<div class="shead"><span class="ic">🪜</span><span class="t">倍率阶梯<small>100U 如何滚成 756U</small></span><span class="ln"></span></div>
+<div class="shead"><span class="ic">🪜</span><span class="t">倍率阶梯<small>100U 如何滚成 544U</small></span><span class="ln"></span></div>
 <div class="ladder"><div class="lad" id="lad"></div><div class="lad-note" id="ladnote"></div></div>
 
 <div class="shead"><span class="ic">🏁</span><span class="t">战绩台<small>每注必复盘 · 真实赛果入账 · 彻底诚实</small></span><span class="ln"></span></div>
 <div class="lstats" id="lstats"></div>
 <div class="log" id="log"></div>
 
-<div class="shead"><span class="ic">📋</span><span class="t">今晚 4 场 · 全过一遍<small>哪些进了串、哪些回避</small></span><span class="ln"></span></div>
+<div class="shead"><span class="ic">📋</span><span class="t">今日 4 场 · 全过一遍<small>哪些进了串、哪些回避</small></span><span class="ln"></span></div>
 <div class="scan" id="scan"></div>
 
-<div class="shead"><span class="ic">📐</span><span class="t">我用的爆冷方法论<small>历史有效框架＋复盘进化 · 标注今晚是否触发</small></span><span class="ln"></span></div>
+<div class="shead"><span class="ic">📐</span><span class="t">我用的爆冷方法论<small>历史有效框架＋复盘进化 · 标注今日是否触发</small></span><span class="ln"></span></div>
 <div class="method" id="method"></div>
 
 <footer>
-  <div class="rg"><b>这是娱乐：</b>赌球长期 −EV、串关更甚（抽水叠加）。8 天 1–7、累计 −420U——<b>这页最大的诚实就是：它没找到稳定 edge，照实显示在最上面</b>。本工具只帮你把注定 −EV 的"圆梦"做得有脑子点：小注、博倍率、讲对故事。只用<b>输得起的钱</b>（你说的 300U 封顶），<b>绝不追损、绝不加注回本</b>。以官方赛程与持牌平台实时盘口为准，遵守当地法律。</div>
-  <div class="sign">爆冷雷达 · 今日一注 v4.1（moonshot 串关版）· Claude 网状深想 · 数据 ESPN/FIFA/Opta/Polymarket 等 · 每日推演＋复盘进化</div>
+  <div class="rg"><b>这是娱乐：</b>赌球长期 −EV、串关更甚。<b>战绩 2–7、累计 +236U——别被这个正数骗了：它是一次 ~10% 的 D9 彩票刚好命中、把前 7 把的亏一次拉回来，是方差、不是稳定盈利能力。</b> 本工具只帮你把注定 −EV 的"圆梦"做得有脑子点：小注、博倍率、讲对故事、回正了也不加注。只用<b>输得起的钱</b>（你说的 300U 封顶），<b>绝不追损、绝不加注回本</b>。以官方赛程与持牌平台实时盘口为准，遵守当地法律。</div>
+  <div class="sign">爆冷雷达 · 今日一注 v4.2（moonshot 串关版）· Claude 网状深想 · 部署于 Cloudflare(github.com/beer98/upset-radar) · 数据 ESPN/Covers/Kalshi 等</div>
 </footer>
 
 </div>
@@ -198,38 +202,38 @@ footer{margin-top:30px;border-top:2px solid var(--line);padding-top:16px;font-si
 // ---------------- tonight's parlay ----------------
 const STAKE=100;
 const LEGS=[
- {fl:'🇮🇷',team:'伊朗 不败',ng:'vs 比利时',odd:2.83,why:'比利时首轮被埃及1-1逼平、黄金一代乏力;伊朗防守铁桶、最擅搅黄强队'},
- {fl:'🇨🇻',team:'佛得角 不败',ng:'vs 乌拉圭',odd:2.67,why:'佛得角刚把夺冠热门西班牙0-0零封、防线组织顶级;乌拉圭首轮也仅1-1平沙特'}
+ {fl:'🇸🇳',team:'挪威/塞内加尔 平',ng:'',odd:3.40,kind:'value',why:'两支势均力敌强队、都要分;分析师标"平"被低估(现价+240>可下线+220)。这是今天唯一真value'},
+ {fl:'🇩🇿',team:'阿尔及利亚 赢',ng:'vs 约旦',odd:1.60,kind:'bank',why:'稳胆:阿尔及利亚近5场4不败/3胜、个体更强;约旦6场不胜、首轮1-3负奥地利。抬倍率用,非value'}
 ];
 const combo=LEGS.reduce((a,l)=>a*l.odd,1);
 const payout=Math.round(STAKE*combo);
 document.getElementById('legs').innerHTML=LEGS.map((l,i)=>`
-  <div class="leg">
+  <div class="leg ${l.kind==='bank'?'bank':''}">
     <span class="lfl">${l.fl}</span>
-    <div class="lmid"><div class="lt">${l.team}${l.ng?`<span class="ng">${l.ng}</span>`:''}</div><div class="lw">腿${i+1}：${l.why}</div></div>
+    <div class="lmid"><div class="lt">${l.team}${l.ng?`<span class="ng">${l.ng}</span>`:''}<span class="${l.kind==='value'?'tagv':'tagv tagb'}">${l.kind==='value'?'VALUE':'稳胆'}</span></div><div class="lw">腿${i+1}：${l.why}</div></div>
     <span class="lod">@${l.odd.toFixed(2)}</span>
   </div>`).join('');
 document.getElementById('cx').textContent='×'+combo.toFixed(1);
 document.getElementById('cpay').textContent=payout+'U';
 
-// ladder (robust: mark last step in loop)
 let run=STAKE; let steps=`<div class="lstep"><div class="ls-l">本金</div><div class="ls-v">${STAKE}U</div></div>`;
 LEGS.forEach((l,i)=>{ run=run*l.odd; const fin=(i===LEGS.length-1);
   steps+=`<div class="conn"></div><div class="lstep ${fin?'fin':''}"><div class="ls-l">× <b>${l.team}</b> @${l.odd.toFixed(2)}${fin?' → 🚀':''}</div><div class="ls-v">${Math.round(run)}U</div></div>`; });
 document.getElementById('lad').innerHTML=steps;
-document.getElementById('ladnote').textContent='一腿失则归零 · 命中率约 10% · 输得起才下';
+document.getElementById('ladnote').textContent='一腿失则归零 · 命中率约 18% · 输得起才下';
 
 // ---------------- ledger ----------------
 const LOG=[
  {day:1,date:'6/13',match:'巴西 1–1 摩洛哥',pick:'摩洛哥 直接赢',odd:5.25,status:'loss',pl:-100,review:'<span class="tag">复盘</span>单赢遇平即输。'},
  {day:2,date:'6/14',match:'荷兰 2–2 日本',pick:'日本 直接赢',odd:3.40,status:'loss',pl:-100,review:'<span class="tag">复盘</span>又平。'},
- {day:3,date:'6/15',match:'比利时 1–1 埃及',pick:'打平',odd:3.80,status:'win',pl:280,review:'<span class="tag">复盘 ✓</span><b>命中 +280U</b>，至今唯一一胜、来自押"平"。'},
+ {day:3,date:'6/15',match:'比利时 1–1 埃及',pick:'打平',odd:3.80,status:'win',pl:280,review:'<span class="tag">复盘 ✓</span><b>+280U</b>，押"平"。'},
  {day:4,date:'6/16',match:'法国 3–1 塞内加尔',pick:'塞内加尔 直接赢',odd:8.00,status:'loss',pl:-100,review:'<span class="tag">复盘</span>碾压。'},
  {day:5,date:'6/17',match:'加纳 1–0 巴拿马',pick:'巴拿马 直接赢',odd:3.60,status:'loss',pl:-100,review:'<span class="tag">复盘</span>90+5\'绝杀。'},
  {day:6,date:'6/18',match:'墨西哥 1–0 韩国',pick:'韩国 直接赢',odd:4.20,status:'loss',pl:-100,review:'<span class="tag">复盘</span>门将失误丢球、仍输。'},
- {day:7,date:'6/19',match:'美国 2–0 澳大利亚',pick:'澳大利亚 直接赢',odd:5.75,status:'loss',pl:-100,review:'<span class="tag">复盘</span>反买94%失败、公众对。'},
- {day:8,date:'6/20',match:'3 串 1（德/荷/突日）',pick:'德不胜+荷不胜+突日平',odd:18.49,status:'loss',pl:-100,review:'<span class="tag">复盘</span><b>3 腿全断</b>：德国2-1逆转科特迪瓦、荷兰5-1血洗瑞典(押瑞典不败彻底反向)、日本4-0屠突尼斯。豪强碾压行情，串关也救不了。'},
- {day:9,date:'6/21',match:'今晚 2 串 1 moonshot',pick:'伊朗不败 + 佛得角不败',odd:combo,status:'pending',pl:null,review:'<span class="tag">推演</span>两个拉胯豪强同夜再被逼住。诚实：两腿≈公道/微负，是 −EV 小注彩票、非 +EV。'}
+ {day:7,date:'6/19',match:'美国 2–0 澳大利亚',pick:'澳大利亚 直接赢',odd:5.75,status:'loss',pl:-100,review:'<span class="tag">复盘</span>反买94%失败。'},
+ {day:8,date:'6/20',match:'3 串 1（德/荷/突日）',pick:'德不胜+荷不胜+突日平',odd:18.49,status:'loss',pl:-100,review:'<span class="tag">复盘</span>3腿全断(荷5-1血洗瑞典)。'},
+ {day:9,date:'6/21',match:'2 串 1（伊朗/佛得角）',pick:'伊朗不败 + 佛得角不败',odd:7.56,status:'win',pl:656,review:'<span class="tag">复盘 ✓✓</span><b>2 串全中 +656U！</b>比利时0-0伊朗、乌拉圭2-2佛得角——"两拉胯豪强同夜再被逼住"完全应验，−420U 一把拉回 +236U。<b>但这是 ~10% 彩票命中、方差落好,不是我有edge,不上头</b>。'},
+ {day:10,date:'6/22',match:'今日 2 串 1 moonshot',pick:'挪威/塞内加尔平 + 阿尔及利亚赢',odd:combo,status:'pending',pl:null,review:'<span class="tag">推演</span>今天薄:唯一真value=挪威-塞内加尔平,配阿尔及利亚稳胆抬倍率。edge只在平那条腿。'}
 ];
 const settled=LOG.filter(l=>l.status==='loss'||l.status==='win');
 const cumPL=settled.reduce((s,l)=>s+(l.pl||0),0);
@@ -247,7 +251,8 @@ document.getElementById('log').innerHTML=LOG.slice().reverse().map(l=>{
   if(l.status==='pending'){plTxt=`若中 +${Math.round(STAKE*(l.odd-1))}U`;}
   else {plTxt=`${l.pl>0?'+':''}${l.pl}U`; plCls=l.status==='win'?'pos':'neg';}
   const dCls=l.status==='win'?'w':l.status==='loss'?'l':'';
-  return `<div class="le ${l.status==='pending'?'pending':''}">
+  const big=(l.day===9)?'bigwin':'';
+  return `<div class="le ${l.status==='pending'?'pending':''} ${big}">
     <div class="lday"><div class="d ${dCls}">D${l.day}</div><div class="dt">${l.date}</div></div>
     <div class="lbody">
       <div class="lh"><span class="mt">${l.match}</span><span class="${rmap[l.status][0]}">${rmap[l.status][1]}</span></div>
@@ -256,12 +261,12 @@ document.getElementById('log').innerHTML=LOG.slice().reverse().map(l=>{
     </div></div>`;
 }).join('');
 
-// ---------------- tonight's 4 matches scan ----------------
+// ---------------- today's 4 matches scan ----------------
 const SCAN=[
- {g:'H组',h:'比利时',a:'伊朗',fl:'🇮🇷',verd:['v-win','★串·腿1'],odds:'比利时1.40 / 平4.75 / 伊朗7.00',why:'比利时被埃及1-1、老化乏力;伊朗防守铁桶。<b>"伊朗不败@2.83"</b>入串(≈公道,搏故事)。'},
- {g:'H组',h:'乌拉圭',a:'佛得角',fl:'🇨🇻',verd:['v-win','★串·腿2'],odds:'乌拉圭1.45 / 平4.33 / 佛得角7.00',why:'佛得角刚0-0零封西班牙、防线真货;乌拉圭也仅1-1平沙特。<b>"佛得角不败@2.67"</b>入串。'},
- {g:'H组',h:'西班牙',a:'沙特',fl:'🇸🇦',verd:['v-avoid','chalk回避'],odds:'西班牙-1250(超低) / 沙特+2200',why:'西班牙被佛得角0-0憋疯、必反弹屠沙特;沙特+2200是<b>纯送钱陷阱</b>。无肉之有效冷门，不入串。'},
- {g:'?组',h:'新西兰',a:'埃及',fl:'🇪🇬',verd:['v-watch','观望'],odds:'埃及favored / 新西兰大冷',why:'埃及(萨拉赫)更强、新西兰攻坚弱。新西兰不败是longshot、无清晰边际，不入串。'},
+ {g:'I组',h:'挪威',a:'塞内加尔',fl:'🇸🇳',verd:['v-win','★串·value腿'],odds:'挪威2.30 / 平3.40 / 塞内加尔3.10',why:'两强相遇、都要分;挪威状态火(16/17不败+哈兰德)、塞内加尔需胜。<b>"平@3.40"被标value</b>入串。'},
+ {g:'J组',h:'约旦',a:'阿尔及利亚',fl:'🇩🇿',verd:['v-2nd','★串·稳胆'],odds:'约旦5.75 / 平3.50 / 阿尔及利亚1.60',why:'阿尔及利亚状态好+更强、约旦6场不胜。<b>"阿尔及利亚赢@1.60"</b>作稳胆抬倍率(非value、只是大概率)。'},
+ {g:'J组',h:'阿根廷',a:'奥地利',fl:'🇦🇹',verd:['v-avoid','chalk回避'],odds:'阿根廷1.60 / 平4.00 / 奥地利5.75',why:'阿根廷赢=提前出线、<b>有动机不轮换</b>(梅西首轮帽子戏法);奥地利不败≈公道。无超额edge,不入串。'},
+ {g:'I组',h:'法国',a:'伊拉克',fl:'🇮🇶',verd:['v-avoid','送钱chalk'],odds:'法国-1200(超低) / 伊拉克+3300',why:'法国90%胜、伊拉克首轮1-4负挪威。<b>纯chalk陷阱</b>,无肉之冷门。回避。'},
 ];
 document.getElementById('scan').innerHTML=SCAN.map(s=>`
   <div class="srow ${s.verd[0]==='v-win'?'win':''}">
@@ -272,21 +277,20 @@ document.getElementById('scan').innerHTML=SCAN.map(s=>`
 
 // ---------------- methodology ----------------
 const METHOD=[
- {t:'认清这是 −EV 彩票 · 只下输得起的小注',s:'8天1-7证明没有可持续edge——继续玩=接受娱乐性−EV。小注、博倍率、不自欺为+EV、绝不追损。这是今天最大的进化:诚实。',fire:true,fresh:true},
- {t:'小注 × 多串 = 唯一能圆梦的形状',s:'单场5倍单既被抽水吃死、又到不了"2000万"。要大钱只能靠多串的乘法payoff(你那张图就是10串)。',fire:true},
- {t:'挑腿要讲对故事',s:'每条腿要有真叙事(脆弱豪强×顽强弱旅/状态背离),不硬凑。今晚=两个拉胯豪强同夜被逼。',fire:true},
- {t:'押"平/不败" > 押"弱队单赢"',s:'8天数据:押单赢0-6、唯一胜来自押"平"。串关腿优先用命中率更高的"不败/平"。',fire:true},
- {t:'形态背离 · 脆弱favorite',s:'比利时/乌拉圭首轮都只逼平、状态在线度存疑——盯"赢得费劲"的豪强。',fire:true},
- {t:'世界杯爆冷铁律 · 顽强弱旅',s:'佛得角刚零封西班牙、伊朗防守铁桶——能把强队拖进泥潭的那种。',fire:true},
- {t:'回避 chalk 与陷阱',s:'西班牙-1250送钱、沙特+2200陷阱,都不碰。高赔率≠价值。',fire:true},
- {t:'一注制 · 强制纪律',s:'每天一张单(今晚=一张串)，不连开、不追损。控回撤＝活到决赛。',fire:true},
- {t:'比分盘留作更高倍 moonshot',s:'要更大倍率时用correct-score(10×+);今晚先用不败串稳一点的命中率。',fire:false},
- {t:'豪强逼平潮 vs 归位（动态）',s:'D1-3逼平→D4起归位碾压。模式在变、别死守;只在个案成立时单点狙。',fire:true},
+ {t:'认清 −EV · 回正了也不加注',s:'2-7、+236U——靠 D9 一次 ~10% 彩票命中拉回,非稳定盈利。回正后最易上头加注,纪律=维持小注、不追梦。',fire:true,fresh:true},
+ {t:'小注 × 多串 = 圆梦结构',s:'单场单赢圆不了"2000万"、要大钱靠乘法。D9 验证:小注多串中一次就能补一串亏。',fire:true},
+ {t:'有 value 才下手 · 不强凑',s:'今天只一条真value(挪威-塞平),不硬拼双value;稳胆只抬倍率、明说它非value。',fire:true},
+ {t:'押"平/不败" > 押"弱队单赢"',s:'10天:押单赢0-6、两次"平/不败"串(D9中、D3中)是唯二盈利来源。',fire:true},
+ {t:'情境因子 · 末轮动机/轮换',s:'本想抓"阿根廷出线放水",查后发现今天是MD2、阿根廷拼出线不轮换→该角度作废,纠错。',fire:true},
+ {t:'回避 chalk 与陷阱',s:'法国-1200、阿根廷热门、伊拉克+3300 都不碰。高赔率≠价值。',fire:true},
+ {t:'一注制 · 强制纪律',s:'每天一张单、不连开、不追损。控回撤＝把 D9 赚的守住。',fire:true},
+ {t:'不因输怕、不因赢狂',s:'1-7时没缩、改结构;2-7回正后不膨胀。只认结构与纪律、不被战绩牵着走。',fire:true},
+ {t:'比分盘留作更高倍 moonshot',s:'要更大倍率用correct-score;今天edge薄,先用平+稳胆的小串。',fire:false},
 ];
 document.getElementById('method').innerHTML=METHOD.map((m,i)=>`
   <div class="mrow ${m.fresh?'fresh':''}"><span class="no">${String(i+1).padStart(2,'0')}</span>
     <span class="mt"><b>${m.t}</b>${m.fresh?'<span class="new">复盘新增</span>':''}<small>${m.s}</small></span>
-    <span class="fire ${m.fire?'on':'off'}">${m.fire?'✓ 今晚触发':'— 搁置'}</span></div>`).join('');
+    <span class="fire ${m.fire?'on':'off'}">${m.fire?'✓ 今日触发':'— 搁置'}</span></div>`).join('');
 </script>
 </body>
 </html>
